@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="all.ico">
+  <title>who?</title>
+  <style>
+    .modal-content {
+      background-color: rgb(255, 255, 255) !important;
+    }
+
+    .modal-backdrop {
+      background-color: rgba(255, 186, 215, 0.485) !important;
+      /* preto com 70% de opacidade */
+    }
+
+    .card-body {
+      height: 200px;
+    }
+
+    h4 {
+      line-height: bold;
+    }
+
+    #btn {
+      animation: btn infinite 3s ease-in-out;
+    }
+
+    @keyframes btn {
+      0% {
+        background-color: rgb(255, 222, 227);
+        font-family: cursive;
+        -webkit-text-stroke: 2px rgb(241, 144, 144);
+      }
+
+      25% {
+        background-color: rgb(255, 222, 227);
+        font-family: cursive;
+        -webkit-text-stroke: 2px rgb(241, 144, 144);
+      }
+
+      50% {
+        background-color: rgb(255, 178, 190);
+        font-family: cursive;
+        -webkit-text-stroke: 2px rgb(235, 116, 116);
+      }
+
+      100% {
+        background-color: rgb(255, 222, 227);
+        font-family: cursive;
+        -webkit-text-stroke: 2px rgb(241, 144, 144);
+      }
+    }
+  </style>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--who ate kirby's cake?
+      ------------------
+    * scargot
+    * Banana-dee
+    * King Dedede
+    * Meta Knight
+    * Fumu
+    * Bun
+    ** Tokori -->
+
+  <br>
+
+  <div class="container text-center" style="font-family: cursive; font-size: 18px;">
+    <h1 style="color: pink; -webkit-text-stroke: 2px rgb(241, 123, 123);">Quem comeu o bolo do Kirby?</h1>
+    <br>
+    <div class="row">
+      <div class="col"></div>
+      <div class="container d-flex align-items-center justify-content-center">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img id="imagem" src="kirbo.gif" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h4 id="name" class="card-title">Mistério em DreamLand!</h4>
+                <p id="demo" class="card-text">O delicioso bolo de morango do Kirby desapareceu! Quem será que cometeu
+                  essa doçura? <br>
+                  <strong>Passe o mouse sobre os suspeitos e ajude Kirby a encontrar o culpado!</strong>
+                </p>
+                <p id="frase" class="card-text"><small class="text-body-secondary">
+                </p>
+                </small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <img src="weddle.png" onmouseover="banana()" onmouseout="bananaNo()" class="img-thumbnail">
+      </div>
+      <div class="col">
+        <img src="king.png" onmouseover="kingDedede()" onmouseout="kingNo()" class="img-thumbnail">
+      </div>
+      <div class="col">
+        <img src="scar.png" onmouseover="scargot()" onmouseout="scarNo()" class="img-thumbnail">
+      </div>
+      <div class="col">
+        <img src="meta.png" onmouseover="metaKnight()" onmouseout="metaNo()" class="img-thumbnail">
+      </div>
+      <div class="col">
+        <img src="tiff.png" onmouseover="tiff_bun()" onmouseout="tiffNo()" class="img-thumbnail">
+      </div>
+      <div class="col">
+        <img src="tokkori.png" onmouseover="tokkori()" onmouseout="tokkoriNo()" class="img-thumbnail">
+      </div>
+    </div>
+  </div>
+
+  <!--submit-->
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <form action="#" class="form p-3">
+          <input type="text" class="form-control" id="resposta" autocomplete="off" placeholder="Quem é o culpado?">
+          <br>
+          <button type="submit" onclick="check(event)" id="btn" class="btn">Submit</button>
+          <button type="Reset" onclick="load()" class="btn btn-outline-danger">Reset</button>
+      </div>
+      <div class="col"></div>
+      </form>
+      <p id="as"></p>
+    </div>
+
+
+    <!--resposta \/ // pegar o input e verificar se o que fo digitado corresponde ao nome do assasino ou não-->
+    <script>
+      function check(event) {
+        event.preventDefault();
+        var x = document.getElementById("resposta").value.toLowerCase();
+        var res = "";
+
+        if (x == "tokkori" || x == "tokori") {
+          res = "Você acertou!";
+        }
+        else {
+          res = "Não, não é...tente novamente :<";
+        }
+        document.getElementById("as").innerHTML = res;
+
+
+        const modalElement = document.querySelector('.modal'); // pega o modal pelo seletor // Pega o elemento com a classe .modal
+        const modalBootstrap = new bootstrap.Modal(modalElement); // cria a instância do modal // Pega os controles(funções) do modal e meio que reseta tudo, como se modificasse um controle remoto, criando uma nova configuração(funcção, controles, instâncias) para ligar um carro só pela voz
+
+        if (res == "Você acertou!") {
+          modalBootstrap.show(); // exibe o modal se a resposta for igual a "Você acertou!"
+        }
+      }
+
+      function load() {
+        location.href = location.pathname;
+      }
+    </script>
+
+    <!--exibe modal se o usuário acertar-->
+
+    <div class="modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Você descobriu o culpado!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="row g-0">
+              <div class="col-md-3">
+                <img src="all.png" class="img-fluid rounded-start" alt="Parabéns">
+              </div>
+              <div class="col-md-9">
+                <h3>Parábens, você encontrou <span style="color: rgb(255, 221, 0);">Tokkori</span>, o devorador de
+                  bolos!</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    const img = 'kirbo.gif'; // mostra essa imagem quando não há mouseover()
+    const des = "O delicioso bolo de morango do Kirby desapareceu! Quem será que cometeuessa doçura? <br> <strong>Passe o mouse sobre os suspeitos e ajude Kirby a encontrar o culpado!</strong>"
+    const tit = "Mistério em DreamLand!"
+
+    //mostrar os objetos/pistas dos personagens
+
+    //Bandana Waddle Dee
+    const dee = {
+      name: "Bandana Waddle Dee",
+      desc: "Na praça de Dream Land. Não estava perto da cozinha.",
+      catch: "Bolo sumiu? Não fui eu, juro!"
+    };
+
+    function banana() {
+      document.getElementById("name").innerHTML = dee.name;
+      document.getElementById("demo").innerHTML = dee.desc;
+      document.getElementById("frase").innerHTML = dee.catch;
+      document.getElementById("imagem").src = 'weddle.png';
+    }
+
+    function bananaNo() {
+      document.getElementById("name").innerHTML = tit;
+      document.getElementById("demo").innerHTML = des;
+      document.getElementById("frase").innerHTML = "";
+      document.getElementById("imagem").src = img;
+    }
+
+    //King Dedede
+    const king = {
+      name: "King Dedede",
+      desc: "No trono, discutindo picolés com Escargoon. Irritado.",
+      catch: "Meu picolé! Bolo do Kirby? Problema dele! Não como sem chantilly real!"
+    };
+
+    function kingDedede() {
+      document.getElementById("name").innerHTML = king.name;
+      document.getElementById("demo").innerHTML = king.desc;
+      document.getElementById("frase").innerHTML = king.catch;
+      document.getElementById("imagem").src = 'king.png';
+    }
+
+    function kingNo() {
+      document.getElementById("name").innerHTML = tit;
+      document.getElementById("demo").innerHTML = des;
+      document.getElementById("frase").innerHTML = "";
+      document.getElementById("imagem").src = img;
+    }
+
+    //Escargoon
+    const scar = {
+      name: "Escargoon",
+      desc: "Na sala do trono, briga acalorada com o Rei. Distraído.",
+      catch: "Majestade, já tenho problemas demais! Não liguei para bolo nenhum!"
+    };
+
+    function scargot() {
+      document.getElementById("name").innerHTML = scar.name;
+      document.getElementById("demo").innerHTML = scar.desc;
+      document.getElementById("frase").innerHTML = scar.catch;
+      document.getElementById("imagem").src = 'scar.png';
+    }
+
+    function scarNo() {
+      document.getElementById("name").innerHTML = tit;
+      document.getElementById("demo").innerHTML = des;
+      document.getElementById("frase").innerHTML = "";
+      document.getElementById("imagem").src = img;
+    }
+
+    //Meta Knight
+    const meta = {
+      name: "Meta Knight",
+      desc: "Em patrulha perto do palácio real.",
+      catch: "Bolo? Não creio que tenha sido um monstro voador encomendado pelo rei."
+    };
+
+    function metaKnight() {
+      document.getElementById("name").innerHTML = meta.name;
+      document.getElementById("demo").innerHTML = meta.desc;
+      document.getElementById("frase").innerHTML = meta.catch;
+      document.getElementById("imagem").src = 'meta.png';
+    }
+
+    function metaNo() {
+      document.getElementById("name").innerHTML = tit;
+      document.getElementById("demo").innerHTML = des;
+      document.getElementById("frase").innerHTML = "";
+      document.getElementById("imagem").src = img;
+    }
+
+    //Fumu e Bun
+    const tiff = {
+      name: "Fumu e Bun",
+      desc: "No jardim. Vimos algo passar voando rápido da direção da cozinha.",
+      catch: "Ah, Kirby! Quem seria capaz de fazer isso? Que estranho."
+    };
+
+    function tiff_bun() {
+      document.getElementById("name").innerHTML = tiff.name;
+      document.getElementById("demo").innerHTML = tiff.desc;
+      document.getElementById("frase").innerHTML = tiff.catch;
+      document.getElementById("imagem").src = 'tiff.png';
+    }
+
+    function tiffNo() {
+      document.getElementById("name").innerHTML = tit;
+      document.getElementById("demo").innerHTML = des;
+      document.getElementById("frase").innerHTML = "";
+      document.getElementById("imagem").src = img;
+    }
+
+    //Tokkori
+    const tokori = {
+      name: "Tokkori",
+      desc: "Perto da cozinha, acaba de chegar.",
+      catch: "Bolo? Já não me basta vocês me incomodando todos os dias, agora querem me acusar?!"
+    };
+
+    function tokkori() {
+      document.getElementById("name").innerHTML = tokori.name;
+      document.getElementById("demo").innerHTML = tokori.desc;
+      document.getElementById("frase").innerHTML = tokori.catch;
+      document.getElementById("imagem").src = 'tokkori.png';
+    }
+
+    function tokkoriNo() {
+      document.getElementById("name").innerHTML = tit;
+      document.getElementById("demo").innerHTML = des;
+      document.getElementById("frase").innerHTML = "";
+      document.getElementById("imagem").src = img;
+    }
+
+  </script>
+
+
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
