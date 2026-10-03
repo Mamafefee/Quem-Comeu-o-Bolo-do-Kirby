@@ -1,5 +1,5 @@
-﻿Quem Comeu o-Bolo do Kirby?!
+# **Quem comeu o bolo do kirby?!**
+Descubra quem comeu o delicioso bolo de morango do kirby
 
- Descubra quem comeu o bolo de morango do Kirby!
- 
-Passe o mouse sobre os suspeitos para ver sua descrição e depois adivinhe o culpado.
+- Passe o mouse sobre os suspeitos e veja sua descrição
+- Escreva o nome do personagem e adivinhe o culpado
